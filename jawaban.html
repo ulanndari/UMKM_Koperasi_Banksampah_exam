@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Penjelasan Sistem UMKM, Koperasi, dan Bank Sampah</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background: #f4f4f4; }
+        h1, h2, h3 { color: #2c3e50; }
+        pre { background: #ecf0f1; padding: 10px; overflow-x: auto; }
+        code { font-family: Consolas, monospace; }
+        .section { background: #ffffff; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Penjelasan Program Sistem UMKM, Koperasi, dan Bank Sampah</h1>
+
+    <div class="section">
+        <h2>1. Kelas <code>UMKMSistem</code></h2>
+        <p>Kelas utama yang menjadi dasar bagi semua sistem (UMKM, Koperasi, Bank Sampah). Fitur utama:</p>
+        <ul>
+            <li>Menyimpan nama UMKM</li>
+            <li>Daftar anggota</li>
+            <li>Dana pinjaman default sebesar Rp50.000.000</li>
+            <li>Fungsi menambahkan anggota dan menghitung pengembalian pinjaman dengan bunga 5% per tahun</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Kelas <code>Koperasi</code></h2>
+        <p>Merupakan turunan dari <code>UMKMSistem</code>. Menambahkan fitur transaksi:</p>
+        <ul>
+            <li><strong>catat_transaksi()</strong>: Mencatat transaksi beli atau jual.</li>
+            <li><strong>hitung_keuntungan()</strong>: Menghitung total keuntungan dari selisih jual dan beli.</li>
+        </ul>
+        <pre><code>
+koperasi = Koperasi("Koperasi Desa")
+koperasi.tambah_anggota("inai", 15_000_000)
+koperasi.catat_transaksi("inai", "beli", 200_000)
+koperasi.catat_transaksi("inai", "jual", 800_000)
+keuntungan = koperasi.hitung_keuntungan()
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>3. Kelas <code>BankSampah</code></h2>
+        <p>Turunan dari <code>UMKMSistem</code> yang menangani transaksi sampah:</p>
+        <ul>
+            <li>Data jenis sampah dan nilai tukar per kg</li>
+            <li><strong>catat_sampah()</strong>: Menyimpan data jenis dan berat sampah yang dikumpulkan</li>
+            <li><strong>hitung_nilai_tukar()</strong>: Menghitung total nilai tukar per orang</li>
+            <li><strong>pesan_edukasi()</strong>: Menampilkan pesan edukatif berdasarkan total berat sampah</li>
+        </ul>
+        <pre><code>
+bank = BankSampah("Bank Sampah Cerdas")
+bank.catat_sampah("inai", "plastik", 40)
+bank.hitung_nilai_tukar("inai")
+bank.pesan_edukasi("inai")
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>4. Output Contoh</h2>
+        <p>Contoh hasil dari program:</p>
+        <pre><code>
+Transaksi jual Rp800,000 oleh inai dicatat.
+Total Keuntungan Koperasi: Rp1,000,000
+plastik: 40 kg x Rp3,000 = Rp120,000
+kertas: 20 kg x Rp2,000 = Rp40,000
+Total nilai tukar sampah untuk inai: Rp160,000
+Total sampah terkumpul oleh inai: 60 kg
+Luar biasa! Kamu pahlawan daur ulang desa ini! 🏆💚
+        </code></pre>
+    </div>
+</body>
+</html>
